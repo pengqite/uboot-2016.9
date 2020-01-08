@@ -87,6 +87,7 @@ copyex:
 	/* FCLK:HCLK:PCLK = 1:2:4 */
 	/* default FCLK is 120 MHz ! */
 	ldr	r0, =CLKDIVN
+//this is a new line
 //	mov	r1, #3
 	mov 	r1,#(2<<1)|(1<<0)//3
 	str	r1, [r0]
