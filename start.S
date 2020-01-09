@@ -87,11 +87,17 @@ copyex:
 	/* FCLK:HCLK:PCLK = 1:2:4 */
 	/* default FCLK is 120 MHz ! */
 	ldr	r0, =CLKDIVN
-//this is a new line
-//
-//	mov	r1, #3
 	mov 	r1,#(2<<1)|(1<<0)//3
 	str	r1, [r0]
+
+	mrc p15,0,r0,c1,c0,0
+	orr r0,r0,#0xc0000000//R1_nF:OR:R1_iA
+	mcr p15,0,r0,c1,c0,0
+
+	ldr r0,=MPLLCON   	@Clock Init 400:100:50
+	ldr r1,=(192<<12)|(4<<4)|(1<<0)
+	str r1,[r0]
+	
 #endif	/* CONFIG_S3C24X0 */
 
 	/*
