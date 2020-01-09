@@ -11,7 +11,7 @@
  * SPDX-License-Identifier:	GPL-2.0+
  */
 
-
+//
 #include <config.h>
 
 /* some parameters for the board */
