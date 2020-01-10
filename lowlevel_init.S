@@ -131,6 +131,8 @@ lowlevel_init:
 /* the literal pools origin */
 
 SMRDATA:
+//modify the configuration for MCU 
+#if 0
     .word (0+(B1_BWSCON<<4)+(B2_BWSCON<<8)+(B3_BWSCON<<12)+(B4_BWSCON<<16)+(B5_BWSCON<<20)+(B6_BWSCON<<24)+(B7_BWSCON<<28))
     .word ((B0_Tacs<<13)+(B0_Tcos<<11)+(B0_Tacc<<8)+(B0_Tcoh<<6)+(B0_Tah<<4)+(B0_Tacp<<2)+(B0_PMC))
     .word ((B1_Tacs<<13)+(B1_Tcos<<11)+(B1_Tacc<<8)+(B1_Tcoh<<6)+(B1_Tah<<4)+(B1_Tacp<<2)+(B1_PMC))
@@ -144,3 +146,18 @@ SMRDATA:
     .word 0x32
     .word 0x30
     .word 0x30
+#else
+    .long   0x22011110        @ BWSCON
+    .long   0x00000700      @ BANKCON0
+    .long   0x00000700      @ BANKCON1
+    .long   0x00000700      @ BANKCON2
+    .long   0x00000700      @ BANKCON3
+    .long   0x00000700      @ BANKCON4
+    .long   0x00000700      @ BANKCON5
+    .long   0x00018005      @ BANKCON6
+    .long   0x00018005      @ BANKCON7
+    .long   0x008C07A3      @ REFRESH
+    .long   0x000000B1      @ BANKSIZE
+    .long   0x00000030      @ MRSRB6
+    .long   0x00000030      @ MRSRB7   
+#endif
